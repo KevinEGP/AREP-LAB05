@@ -2,12 +2,22 @@ package co.edu.eci.arep;
 
 import static spark.Spark.*;
 
+import java.util.ArrayList;
+
 public class App {
     public static void main( String[] args ) {
+        // ArrayList passwords = {user_1: "dsdasdasdasdasdasdadasda", ""};
+
         port(getPort());
         secure(getKeyStorePath(), getKeyStorePassword(), null, null);
-        get("/hello", (req, res) -> "Hello Heroku");
+        get("/hello", (req, res) -> validatePassword(req.body().toString()));
     }
+
+    static boolean validatePassword(String s) {
+
+        return true;
+    }
+
 
     static int getPort() {
         if (System.getenv("PORT") != null) {
